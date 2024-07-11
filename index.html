@@ -72,15 +72,15 @@
     </div>
 
     <script>
-        async function fetchSensorData() {
+     async function fetchSensorData() {
             try {
                 const response = await fetch('/api/sensor-data');
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const data = await response.json();
-                document.getElementById('temperature').innerText = `${data.suhu} °C`;
-                document.getElementById('tds').innerText = `${data.tds} ppm`;
+                document.getElementById('Suhu').innerText = `${data.Suhu} °C`;
+                document.getElementById('TDS').innerText = `${data.TDS} ppm`;
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
