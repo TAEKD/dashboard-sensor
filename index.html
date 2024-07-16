@@ -69,10 +69,6 @@
             <h2>pH</h2>
             <div class="gauge" id="ph">0</div>
         </div>
-        <div class="sensor">
-            <h2>Kelembapan</h2>
-            <div class="gauge" id="humidity">0 %</div>
-        </div>
     </div>
 
     <script>
@@ -84,10 +80,8 @@
                 }
                 const data = await response.json();
                 document.getElementById('temperature').innerText = `${data.Suhu} °C`;
-                document.getElementById('humidity').innerText = `${data.Humi} %`;
                 document.getElementById('tds').innerText = `${data.tds} ppm`;
                 document.getElementById('ph').innerText = `${data.pH}`;
-               
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
