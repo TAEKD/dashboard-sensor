@@ -22,10 +22,6 @@
         .header h1 {
             margin: 5px 0;
         }
-        .header h2 {
-            margin: 5px 0;
-            font-weight: normal;
-        }
         .dashboard {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -69,18 +65,28 @@
             <h2>TDS</h2>
             <div class="gauge" id="tds">0 ppm</div>
         </div>
+        <div class="sensor">
+            <h2>pH</h2>
+            <div class="gauge" id="ph">0</div>
+        </div>
+        <div class="sensor">
+            <h2>Kelembapan</h2>
+            <div class="gauge" id="humidity">0 %</div>
+        </div>
     </div>
 
     <script>
-     async function fetchSensorData() {
+        async function fetchSensorData() {
             try {
                 const response = await fetch('/api/sensor-data');
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const data = await response.json();
-                document.getElementById('Suhu').innerText = `${data.Suhu} °C`;
-                document.getElementById('TDS').innerText = `${data.TDS} ppm`;
+                document.getElementById('temperature').innerText = `${data.Suhu} °C`;
+                document.getElementById('tds').innerText = `${data.tds} ppm`;
+                document.getElementById('ph').innerText = `${data.pH}`;
+                document.getElementById('humidity').innerText = `${data.Humi} %`;
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
